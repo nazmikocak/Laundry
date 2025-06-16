@@ -1,0 +1,81 @@
+﻿@model LaundrySystem.Entities.Models.Appointment
+@using LaundrySystem.Web.Extensions
+
+
+@{ ViewData["Title"] = "Randevu Onayla"; }
+
+<div class="stepper-layout">
+    <div class="stepper">
+        <div class="stepper-item completed"><div class="stepper-item-number"><i class="fa-solid fa-check"></i></div><div class="stepper-item-text"><strong>Randevu Ara</strong></div></div>
+        <div class="stepper-item completed"><div class="stepper-item-number"><i class="fa-solid fa-check"></i></div><div class="stepper-item-text"><strong>Çamaşırhane Listesi</strong></div></div>
+        <div class="stepper-item completed"><div class="stepper-item-number"><i class="fa-solid fa-check"></i></div><div class="stepper-item-text"><strong>Randevu Al</strong></div></div>
+        <div class="stepper-item active"><div class="stepper-item-number">4</div><div class="stepper-item-text"><strong>Onay</strong><p>Bilgileri kontrol ediniz</p></div></div>
+    </div>
+
+    <div class="stepper-content content-section">
+        <div class="content-section-header">
+            <h3>Randevu Bilgilerini Onayla</h3>
+        </div>
+
+        <div class="appointment-ticket">
+            <div class="ticket-header">
+                <div class="icon">
+                    <i class="fa-solid @(Model.Machine?.MachineType == LaundrySystem.Entities.Enums.MachineType.Washing ? "fa-shirt" : "fa-wind")"></i>
+                </div>
+                <div class="info">
+                    <h4>@Model.Machine?.MachineType.GetDisplayName() Randevusu</h4>
+                    <p>@Model.Machine?.Laundry?.LocationDescription</p>
+                </div>
+            </div>
+            <div class="ticket-body">
+                <div class="ticket-item">
+                    <span class="label">Öğrenci</span>
+                    <span class="value">@Model.Student?.FirstName @Model.Student?.LastName</span>
+                </div>
+                <div class="ticket-item">
+                    <span class="label">Yurt</span>
+                    <span class="value">@Model.Student?.Dormitory?.DormitoryName</span>
+                </div>
+                <div class="ticket-item">
+                    <span class="label">Makine No</span>
+                    <span class="value">M-@Model.Machine?.MachineNumber</span>
+                </div>
+                <div class="ticket-item">
+                    <span class="label">Tarih</span>
+                    <span class="value">@Model.StartTime.ToString("dd MMMM yyyy")</span>
+                </div>
+                <div class="ticket-item" style="grid-column: 1 / -1;">
+                    <span class="label">Saat Aralığı</span>
+                    <span class="value">@Model.StartTime.ToString("HH:mm") - @Model.EndTime.ToString("HH:mm") (@Model.Machine?.Laundry?.SessionDurationMinutes dk.)</span>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <p>Lütfen randevu saatinizden 5 dakika önce çamaşırhanede bulununuz.</p>
+            </div>
+        </div>
+
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="machineId" value="@Model.MachineId" />
+            <input type="hidden" name="startTime" value="@Model.StartTime.ToString("o")" />
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Randevuyu Onayla</button>
+                <a asp-controller="Appointment" asp-action="Search" class="btn btn-secondary">İptal Et</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        if (TempData["ErrorMessage"] != null)
+        {
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    showErrorModal('Randevu Oluşturulamadı', '@TempData["ErrorMessage"]');
+                });
+            </script>
+        }
+    }
+}

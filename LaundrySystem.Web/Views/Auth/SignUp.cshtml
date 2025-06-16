@@ -1,0 +1,115 @@
+﻿@using LaundrySystem.Entities.Models
+@model LaundrySystem.Entities.DTOs.UserForSignUpDto
+
+@{
+    Layout = "_LayoutAuth";
+    ViewData["Title"] = "Üye Ol";
+    var dormitories = ViewBag.Dormitories as IEnumerable<Dormitory>;
+}
+
+<div class="split-screen">
+    <div class="left-pane">
+        <div class="auth-form-container">
+            <div class="logo-container">
+                <img src="~/img/gsb-kyk-logo-color-vertical.png" alt="KYK Logo">
+                <h1>Üye Ol</h1>
+            </div>
+
+            <form asp-action="SignUp" method="post" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user icon"></i>
+                        <input asp-for="FirstName" class="form-control" placeholder="Ad">
+                    </div>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user icon"></i>
+                        <input asp-for="LastName" class="form-control" placeholder="Soyad">
+                    </div>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-id-card icon"></i>
+                        <input asp-for="NationalNumber" class="form-control" placeholder="T.C. Kimlik No">
+                    </div>
+                    <span asp-validation-for="NationalNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-building-columns icon"></i>
+                        <select asp-for="DormitoryId" class="form-control">
+                            <option value="">Yurdunuzu Seçiniz</option>
+                            @if (dormitories is not null)
+                            {
+                                @foreach (var dormitory in dormitories)
+                                {
+                                    <option value="@dormitory.DormitoryId">@dormitory.DormitoryName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <span asp-validation-for="DormitoryId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope icon"></i>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="E-posta Adresi">
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock icon"></i>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Parola">
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div style="text-align: left; font-size: 0.8rem; margin-bottom: 20px;">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        <a href="#">Üyelik ve Gizlilik Politikası</a>'nı okudum, kabul ediyorum.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Üye Ol</button>
+            </form>
+        </div>
+    </div>
+    <div class="right-pane"
+         style="background-image: url('https://images.unsplash.com/photo-1610305401607-8745a10c75dd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); ">    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        if (ViewData["ErrorMessage"] != null)
+        {
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    showErrorModal('@ViewData["ErrorMessage"]', '@Html.Raw(ViewData["ErrorDetail"])');
+                });
+            </script>
+        }
+
+        if (TempData["SuccessMessage"] != null)
+        {
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    showInfoModal('Kayıt Başarılı!', '@TempData["SuccessMessage"]');
+                });
+            </script>
+        }
+    }
+}

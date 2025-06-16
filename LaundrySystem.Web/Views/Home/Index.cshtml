@@ -1,0 +1,139 @@
+﻿@model LaundrySystem.Web.Models.HomeViewModel
+@using LaundrySystem.Entities.Enums
+@using LaundrySystem.Web.Extensions
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="main-grid">
+    <div class="left-column">
+        <a asp-controller="Appointment" asp-action="Search" asp-route-type="Washing" class="action-card washing">
+            <div class="icon-circle"><i class="fa-solid fa-shirt"></i></div>
+            <div class="action-card-text"><h3>Yıkama Randevusu Al</h3><p>Müsait yıkama makineleri için randevu alın.</p></div>
+        </a>
+        <a asp-controller="Appointment" asp-action="Search" asp-route-type="Drying" class="action-card drying">
+            <div class="icon-circle"><i class="fa-solid fa-wind"></i></div>
+            <div class="action-card-text"><h3>Kurutma Randevusu Al</h3><p>Müsait kurutma makineleri için randevu alın.</p></div>
+        </a>
+    </div>
+
+    <div class="right-column">
+        <div class="content-section">
+            <div class="content-section-header">
+                <h3>Randevularım</h3>
+                <div class="tabs">
+                    <div class="tab-link active" onclick="showTab('active')">Aktif</div>
+                    <div class="tab-link" onclick="showTab('past')">Geçmiş</div>
+                </div>
+            </div>
+            <div id="active-appointments" class="tab-content">
+                @if (Model.ActiveAppointments.Any())
+                {
+                    @foreach (var app in Model.ActiveAppointments)
+                    {
+                        <div class="list-item">
+                            <div class="list-item-info">
+                                <i class="fa-solid @(app.Machine.MachineType == MachineType.Washing ? "fa-shirt" : "fa-wind")"></i>
+                                <div>
+                                    <h4>@app.Machine.MachineType.GetDisplayName() Makinesi - No: @app.Machine.MachineNumber</h4>
+                                    <p>@app.StartTime.ToString("dd MMMM yyyy, HH:mm") - @app.EndTime.ToString("HH:mm")</p>
+                                    <small>@app.Machine.Laundry.LocationDescription</small>
+                                </div>
+                            </div>
+                            <button type="button" onclick="confirmCancel(@app.AppointmentId)" class="btn btn-danger btn-sm">İptal Et</button>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-state"><i class="fa-regular fa-calendar-xmark"></i><p>Aktif Randevunuz Yok</p></div>
+                }
+            </div>
+            <div id="past-appointments" class="tab-content" style="display:none;">
+                @if (Model.PastAppointments.Any())
+                {
+                    @foreach (var app in Model.PastAppointments)
+                    {
+                        <div class="list-item" style="opacity:0.7">
+                            <div class="list-item-info">
+                                <i class="fa-solid @(app.Machine.MachineType == MachineType.Washing ? "fa-shirt" : "fa-wind")"></i>
+                                <div>
+                                    <h4>@app.Machine.MachineType.GetDisplayName() Makinesi - No: @app.Machine.MachineNumber</h4>
+                                    <p>@app.StartTime.ToString("dd MMMM yyyy, HH:mm")</p>
+                                    <span>Durum: @app.Status</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i><p>Geçmiş Randevunuz Yok</p></div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (Model.ActiveLaundries.Any())
+    {
+        <div class="content-section" style="grid-column: 1 / -1;">
+            <div class="content-section-header"><h3>Yurdumdaki Aktif Çamaşırhaneler</h3></div>
+            <div class="laundry-list">
+                @foreach (var laundry in Model.ActiveLaundries)
+                {
+                    <div class="list-item">
+                        <div class="list-item-info">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>@laundry.LocationDescription</h4>
+                                <p>@laundry.Dormitory?.DormitoryName</p>
+                            </div>
+                        </div>
+                        <a asp-controller="Appointment" asp-action="Search" asp-route-laundryId="@laundry.LaundryId" class="btn btn-primary btn-sm">Randevu Al</a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <form id="cancelForm" asp-action="Cancel" asp-controller="Appointment" method="post" style="display:none;">
+        @Html.AntiForgeryToken()
+        <input type="hidden" id="cancelAppointmentId" name="id" />
+    </form>
+</div>
+
+
+@section Scripts
+{
+    <script>
+        function showTab(tabName) {
+            document.getElementById('active-appointments').style.display = 'none';
+            document.getElementById('past-appointments').style.display = 'none';
+            document.querySelector('.tabs .tab-link.active').classList.remove('active');
+
+            document.getElementById(tabName + '-appointments').style.display = 'block';
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+    <script>
+        function confirmCancel(appointmentId) {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Randevuyu iptal etmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'İptal Et!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('cancelAppointmentId').value = appointmentId;
+                    document.getElementById('cancelForm').submit();
+                }
+            });
+        }
+    </script>
+}   

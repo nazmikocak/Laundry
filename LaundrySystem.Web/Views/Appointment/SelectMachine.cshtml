@@ -1,0 +1,102 @@
+﻿@using LaundrySystem.Entities.DTOs
+@model IEnumerable<AvailableSlotDto>
+
+@{
+    ViewData["Title"] = "Makine Seçimi";
+    string GetMachineClass(AvailableSlotDto machine)
+    {
+        if (machine.MachineStatus == "Faulty" || machine.MachineStatus == "Maintenance")
+        {
+            return "maintenance disabled"; 
+        }
+
+        if (machine.SlotStatus == "Booked")
+        {
+            return "booked disabled"; 
+        }
+
+        return "available"; 
+    }
+
+    string GetLinkAction(AvailableSlotDto machine)
+    {
+        if (machine.MachineStatus != "Active" || machine.SlotStatus == "Booked")
+        {
+            return "#";
+        }
+        return Url.Action("Confirm", "Appointment", new { machineId = machine.MachineId, slotStart = machine.SlotStart.ToString("o") });
+    }
+}
+
+<div class="stepper-layout">
+    <div class="stepper">
+        <div class="stepper-item completed"><div class="stepper-item-number"><i class="fa-solid fa-check"></i></div><div class="stepper-item-text"><strong>Randevu Ara</strong></div></div>
+        <div class="stepper-item completed"><div class="stepper-item-number"><i class="fa-solid fa-check"></i></div><div class="stepper-item-text"><strong>Çamaşırhane Listesi</strong></div></div>
+        <div class="stepper-item active"><div class="stepper-item-number">3</div><div class="stepper-item-text"><strong>Randevu Al</strong><p>Makine seçimi yapınız</p></div></div>
+        <div class="stepper-item"><div class="stepper-item-number">4</div><div class="stepper-item-text"><strong>Onay</strong></div></div>
+    </div>
+    <div class="stepper-content content-section">
+        <div class="content-section-header"><h3>Makine Seçimi (@ViewBag.LaundryName - @ViewBag.SlotTime)</h3></div>
+        <p style="margin-bottom: 20px;">Lütfen randevu almak istediğiniz müsait bir makineyi seçiniz.</p>
+
+        <div class="laundry-room-layout">
+            <div class="wall wall-top">
+                @foreach (var machine in Model.Where(m => m.MachineNumber >= 1 && m.MachineNumber <= 4).OrderBy(m => m.MachineNumber))
+                {
+                    var isClickable = GetMachineClass(machine) == "available";
+
+                    <a href="@(isClickable ? Url.Action("Confirm", new { machineId = machine.MachineId, slotStart = machine.SlotStart.ToString("o") }) : "#")"
+                       class="machine-box-kroki @GetMachineClass(machine)">
+                        <span>M-@machine.MachineNumber</span>
+                        @if (machine.MachineStatus != "Active")
+                        {
+                            <small>(@machine.MachineStatus.)</small>
+                        }
+                    </a>
+                }
+            </div>
+
+            <div class="center-area"><i class="fa-solid fa-person-walking-arrow-right"></i><span>Giriş</span></div>
+
+            <!-- Diğer duvarlar için de aynı mantığı uyguluyoruz -->
+            <div class="wall wall-right">
+                @foreach (var machine in Model.Where(m => m.MachineNumber >= 5 && m.MachineNumber <= 6).OrderBy(m => m.MachineNumber))
+                {
+                    var isClickable = GetMachineClass(machine) == "available";
+                    <a href="@(isClickable ? Url.Action("Confirm", new { machineId = machine.MachineId, slotStart = machine.SlotStart.ToString("o") }) : "#")"
+                       class="machine-box-kroki @GetMachineClass(machine)">
+                        <span>M-@machine.MachineNumber</span>
+                        @if (machine.MachineStatus != "Active")
+                        {<small>(@machine.MachineStatus)</small>}
+                    </a>
+                }
+            </div>
+
+            <div class="wall wall-bottom">
+                @foreach (var machine in Model.Where(m => m.MachineNumber >= 7 && m.MachineNumber <= 10).OrderBy(m => m.MachineNumber))
+                {
+                    var isClickable = GetMachineClass(machine) == "available";
+                    <a href="@(isClickable ? Url.Action("Confirm", new { machineId = machine.MachineId, slotStart = machine.SlotStart.ToString("o") }) : "#")"
+                       class="machine-box-kroki @GetMachineClass(machine)">
+                        <span>M-@machine.MachineNumber</span>
+                        @if (machine.MachineStatus != "Active")
+                        {<small>(@machine.MachineStatus)</small>}
+                    </a>
+                }
+            </div>
+
+            <div class="wall wall-left">
+                @foreach (var machine in Model.Where(m => m.MachineNumber >= 11 && m.MachineNumber <= 12).OrderBy(m => m.MachineNumber))
+                {
+                    var isClickable = GetMachineClass(machine) == "available";
+                    <a href="@(isClickable ? Url.Action("Confirm", new { machineId = machine.MachineId, slotStart = machine.SlotStart.ToString("o") }) : "#")"
+                       class="machine-box-kroki @GetMachineClass(machine)">
+                        <span>M-@machine.MachineNumber</span>
+                        @if (machine.MachineStatus != "Active")
+                        {<small>(@machine.MachineStatus)</small>}
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

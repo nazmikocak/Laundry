@@ -1,0 +1,239 @@
+﻿/* Bu dosya, ana site şablonu (navbar, footer) için stilleri içerir. */
+
+/* ================== HEADER STYLES ================== */
+.site-header {
+    background-color: var(--primary-dark);
+    color: var(--white-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+.header-logo img {
+    height: 70px;
+}
+
+.header-logo span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.header-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.header-nav ul li a {
+    color: var(--white-color);
+    text-decoration: none;
+    padding: 25px 15px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.header-nav ul li a:hover {
+    background-color: var(--primary-medium);
+    text-decoration: none;
+}
+
+.header-right .user-menu {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.header-right .user-menu-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    min-width: 220px;
+    transition: background-color 0.3s;
+}
+
+.header-right .user-menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-right .user-menu-button i {
+    margin-left: 10px;
+}
+
+.header-right .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--white-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    padding: 5px;
+    width: 220px;
+}
+
+.header-right .dropdown-content a {
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
+.header-right .dropdown-content a i {
+    width: 16px;
+    text-align: center;
+}
+
+.header-right .dropdown-content a:hover {
+    background-color: var(--light-bg);
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.header-right .user-menu:hover .dropdown-content {
+    display: block;
+}
+
+/* ================== FOOTER STYLES ================== */
+.site-footer-main {
+    background-color: var(--primary-dark);
+    color: var(--white-color);
+    padding: 20px 0;
+}
+
+.footer-top {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-top-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-top-list li img {
+    height: 40px;
+    filter: grayscale(1) brightness(1.5);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.footer-top-list li a:hover img {
+    opacity: 1;
+}
+
+.footer-bottom {
+    padding-top: 30px;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-bottom-left>img {
+    height: 90px;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-contact strong {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.footer-contact span,
+.footer-contact a {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+.footer-contact a:hover {
+    color: var(--white-color);
+}
+
+.footer-bottom-right {
+    display: flex;
+    gap: 50px;
+}
+
+.footer-links strong {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.footer-links ul li a:hover {
+    color: var(--white-color);
+}
+
+.footer-alo-gsb img {
+    height: 50px;
+}

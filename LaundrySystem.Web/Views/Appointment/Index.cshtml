@@ -1,0 +1,124 @@
+﻿@model LaundrySystem.Web.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Randevularım";
+}
+
+<div class="content-section">
+    <div class="content-section-header">
+        <h3>Randevularım</h3>
+        <p class="text-muted">Tüm aktif ve geçmiş randevu bilgileriniz.</p>
+    </div>
+
+    <h4 style="margin-top: 20px; margin-bottom: 15px; color: var(--primary-dark);">Aktif Randevular</h4>
+
+    @if (Model.ActiveAppointments.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Makine Tipi</th>
+                        <th>Çamaşırhane</th>
+                        <th>Tarih</th>
+                        <th>Saat</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var app in Model.ActiveAppointments)
+                    {
+                        <tr>
+                            <td><i class="fa-solid @(app.Machine.MachineType == LaundrySystem.Entities.Enums.MachineType.Washing ? "fa-shirt text-primary" : "fa-wind text-danger")"></i> M-@app.Machine.MachineNumber</td>
+                            <td>@app.Machine.Laundry.LocationDescription</td>
+                            <td>@app.StartTime.ToString("dd MMMM yyyy, dddd")</td>
+                            <td>@app.StartTime.ToString("HH:mm") - @app.EndTime.ToString("HH:mm")</td>
+                            <td class="text-end">
+                                <button type="button" onclick="confirmCancel(@app.AppointmentId)" class="btn btn-danger btn-sm">İptal Et</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="empty-state" style="padding: 20px; border: 1px dashed var(--border-color); border-radius: 8px;">
+            <i class="fa-regular fa-calendar-xmark"></i>
+            <p>Gelecek tarihli aktif bir randevunuz bulunmamaktadır.</p>
+        </div>
+    }
+
+    <h4 style="margin-top: 40px; margin-bottom: 15px; color: var(--primary-dark);">Geçmiş Randevular</h4>
+
+    @if (Model.PastAppointments.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Makine Tipi</th>
+                        <th>Çamaşırhane</th>
+                        <th>Tarih</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var app in Model.PastAppointments)
+                    {
+                        <tr style="opacity: 0.8;">
+                            <td><i class="fa-solid @(app.Machine.MachineType == LaundrySystem.Entities.Enums.MachineType.Washing ? "fa-shirt" : "fa-wind")"></i> M-@app.Machine.MachineNumber</td>
+                            <td>@app.Machine.Laundry.LocationDescription</td>
+                            <td>@app.StartTime.ToString("dd MMMM yyyy, dddd")</td>
+                            <td>
+                                @if (app.Status == LaundrySystem.Entities.Enums.AppointmentStatus.Completed)
+                                {
+                                    <span class="badge bg-success">Tamamlandı</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">İptal Edildi</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="empty-state" style="padding: 20px; border: 1px dashed var(--border-color); border-radius: 8px;">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <p>Geçmiş randevu kaydınız bulunmamaktadır.</p>
+        </div>
+    }
+</div>
+
+<form id="cancelForm" asp-action="Cancel" asp-controller="Appointment" method="post" style="display:none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="cancelAppointmentId" name="id" />
+</form>
+
+@section Scripts {
+    <script>
+        function confirmCancel(appointmentId) {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Randevuyu iptal etmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'İptal Et!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('cancelAppointmentId').value = appointmentId;
+                    document.getElementById('cancelForm').submit();
+                }
+            });
+        }
+    </script>
+}

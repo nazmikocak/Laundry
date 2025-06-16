@@ -1,0 +1,44 @@
+﻿@model LaundrySystem.Web.Models.LaundryListViewModel
+@using LaundrySystem.Web.Extensions
+
+
+@{
+    ViewData["Title"] = "Çamaşırhane Listesi";
+}
+
+<div class="stepper-layout">
+    <div class="stepper">
+        <div class="stepper-item completed"><div class="stepper-item-number"><i class="fa-solid fa-check"></i></div><div class="stepper-item-text"><strong>Randevu Ara</strong></div></div>
+        <div class="stepper-item active"><div class="stepper-item-number">2</div><div class="stepper-item-text"><strong>Çamaşırhane Listesi</strong><p>Müsait saatleri seçin</p></div></div>
+        <div class="stepper-item"><div class="stepper-item-number">3</div><div class="stepper-item-text"><strong>Randevu Al</strong></div></div>
+        <div class="stepper-item"><div class="stepper-item-number">4</div><div class="stepper-item-text"><strong>Onay</strong></div></div>
+    </div>
+    <div class="stepper-content content-section">
+        <div class="content-section-header"><h3>Müsait Saatler (@Model.AppointmentDate.ToString("dd MMMM yyyy") - @Model.MachineType)</h3></div>
+        <div class="time-slots">
+            @foreach (var item in Model.LaundriesWithSlots)
+            {
+                <div class="laundry-group" style="margin-bottom: 20px;">
+                    <h4 style="font-size:1.1rem; color: var(--primary-dark); padding-bottom:10px; border-bottom:1px solid var(--border-color); margin-bottom:15px;">@item.Laundry.LocationDescription</h4>
+                    @if (item.AvailableSlots.Any())
+                    {
+                        <div class="time-slot-buttons" style="padding-left:0;">
+                            @foreach (var slot in item.AvailableSlots)
+                            {
+                                <a asp-action="SelectMachine"
+                                   asp-route-laundryId="@item.Laundry.LaundryId"
+                                   asp-route-slotStart="@slot.ToString("o")"
+                                   asp-route-machineType="@Model.MachineType"
+                                   class="btn btn-primary btn-sm">@slot.ToString("HH:mm")</a>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p style="color: var(--text-light);">Bu çamaşırhanede seçilen kriterlere uygun randevu bulunamadı.</p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

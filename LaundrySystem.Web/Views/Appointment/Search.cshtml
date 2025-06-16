@@ -1,0 +1,38 @@
+﻿@model LaundrySystem.Web.Models.AppointmentSearchViewModel
+@using LaundrySystem.Entities.Enums
+
+@{
+    ViewData["Title"] = "Randevu Ara";
+}
+
+<div class="stepper-layout">
+    <div class="stepper">
+        <div class="stepper-item active"><div class="stepper-item-number">1</div><div class="stepper-item-text"><strong>Randevu Ara</strong><p>Tarih ve makine tipi seçimi</p></div></div>
+        <div class="stepper-item"><div class="stepper-item-number">2</div><div class="stepper-item-text"><strong>Çamaşırhane Listesi</strong></div></div>
+        <div class="stepper-item"><div class="stepper-item-number">3</div><div class="stepper-item-text"><strong>Randevu Al</strong></div></div>
+        <div class="stepper-item"><div class="stepper-item-number">4</div><div class="stepper-item-text"><strong>Onay</strong></div></div>
+    </div>
+    <div class="stepper-content content-section">
+        <div class="content-section-header"><h3>Randevu Kriterleri</h3></div>
+        <form asp-action="Search" method="post">
+            @Html.AntiForgeryToken()
+            <div class="form-group"><label asp-for="MachineType">Makine Tipi: <span style="color:red;">*</span></label><select asp-for="MachineType" asp-items="Html.GetEnumSelectList<MachineType>()" class="form-control" required><option value="">Seçiniz...</option></select></div>
+            <div class="form-group"><label asp-for="LaundryId">Çamaşırhane:</label><select asp-for="LaundryId" asp-items="Model.Laundries" class="form-control"><option value="">Fark Etmez</option></select></div>
+            <div class="form-group"><label asp-for="AppointmentDate">Tarih: <span style="color:red;">*</span></label><input asp-for="AppointmentDate" type="date" class="form-control" required></div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Randevu Ara</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        if (TempData["ErrorMessage"] != null)
+        {
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    showErrorModal('@TempData["ErrorMessage"]', '@Html.Raw(TempData["ErrorDetail"])');
+                });
+            </script>
+        }
+    }
+}

@@ -1,0 +1,73 @@
+﻿@model LaundrySystem.Entities.DTOs.UserForSignInDto
+
+@{
+    Layout = "_LayoutAuth";
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<div class="split-screen">
+    <div class="left-pane">
+        <div class="auth-form-container">
+            <div class="logo-container">
+                <img src="~/img/gsb-kyk-logo-color-vertical.png" alt="KYK Logo">
+                <h1>Çamaşırhane Randevu Sistemi</h1>
+            </div>
+
+            <form asp-action="SignIn" method="post" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope icon"></i>
+                        <input asp-for="Email" class="form-control" placeholder="E-posta Adresi">
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock icon"></i>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Parola">
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="margin-top:10px;">Giriş Yap</button>
+
+                <div class="auth-links" style="margin-top: 20px;">
+                    <a href="#">Parolamı Unuttum</a>
+                    <a asp-action="SignUp" style="font-weight: 600;">Üye Ol</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right-pane"
+         style="background-image: url('https://images.unsplash.com/photo-1610305401607-8745a10c75dd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); ">
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    @{
+        if (ViewData["ErrorMessage"] != null)
+        {
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    showErrorModal('@ViewData["ErrorMessage"]', '@Html.Raw(ViewData["ErrorDetail"])');
+                });
+            </script>
+        }
+
+        if (TempData["SuccessMessage"] != null)
+        {
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    showSuccessToast('@TempData["SuccessMessage"]');
+                });
+            </script>
+        }
+    }
+}

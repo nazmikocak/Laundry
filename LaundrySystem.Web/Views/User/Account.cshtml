@@ -1,0 +1,102 @@
+﻿@model LaundrySystem.Web.Models.AccountInfoViewModel
+
+@{
+    ViewData["Title"] = "Hesap Bilgilerim";
+}
+
+<div class="content-section">
+    <div class="content-section-header">
+        <h3>Hesap Bilgileri</h3>
+    </div>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert" style="color:var(--danger-color); background:#f8d7da; padding:10px; border-radius:8px; margin-bottom:15px;">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <form asp-action="Account" method="post" novalidate>
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="User.UserId" />
+        <input type="hidden" asp-for="User.RoleId" />
+        <input type="hidden" asp-for="User.PasswordHash" />
+        <input type="hidden" asp-for="User.NationalNumber" />
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- FirstName -->
+            <div class="form-group">
+                <label asp-for="User.FirstName">Ad</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user icon"></i>
+                    <input type="text" asp-for="User.FirstName" class="form-control">
+                </div>
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            </div>
+
+            <!-- LastName -->
+            <div class="form-group">
+                <label asp-for="User.LastName">Soyad</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user icon"></i>
+                    <input type="text" asp-for="User.LastName" class="form-control">
+                </div>
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
+            </div>
+
+            <!-- NationalNumber (Disabled) -->
+            <div class="form-group">
+                <label>T.C. Kimlik No</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-id-card icon"></i>
+                    <input type="text" asp-for="User.NationalNumber" class="form-control" disabled>
+                </div>
+            </div>
+
+            <!-- Dormitory -->
+            <div class="form-group">
+                <label asp-for="User.DormitoryId">Yurt</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-building-columns icon"></i>
+                    <select asp-for="User.DormitoryId" asp-items="Model.Dormitories" class="form-control">
+                        <option value="">Yurt Seçilmemiş</option>
+                    </select>
+                </div>
+                <span asp-validation-for="User.DormitoryId" class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label asp-for="User.Email">E-posta Adresi</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope icon"></i>
+                    <input type="email" asp-for="User.Email" class="form-control">
+                </div>
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+
+            <!-- PhoneNumber -->
+            <div class="form-group">
+                <label asp-for="User.PhoneNumber">Telefon Numarası</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-phone icon"></i>
+                    <input type="tel" asp-for="User.PhoneNumber" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
+            <button type="reset" class="btn btn-secondary">Temizle</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

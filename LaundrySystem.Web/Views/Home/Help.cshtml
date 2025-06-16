@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Yardım ve Proje Hakkında";
+}
+
+<style>
+    .about-page .content-section {
+        line-height: 1.8;
+    }
+
+    .about-page h3 {
+        color: var(--primary-dark);
+        border-bottom: 2px solid var(--primary-medium);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .about-page p {
+        margin-bottom: 15px;
+        color: var(--text-color);
+    }
+
+    .about-page strong {
+        color: var(--primary-darker);
+    }
+
+    .about-page .project-details {
+        background-color: var(--light-bg);
+        border-left: 4px solid var(--primary-medium);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+    }
+
+    .project-details ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .project-details li {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .logo-credit {
+        text-align: center;
+        color: var(--text-light);
+    }
+
+        .logo-credit img {
+            height: 512px;
+            display: block;
+            margin: 0 auto 15px;
+        }
+</style>
+
+<div class="about-page">
+    <div class="content-section">
+        <h3>KYK Çamaşırhane Randevu Sistemi Hakkında</h3>
+        <p>
+            Bu uygulama, Kredi ve Yurtlar Kurumu'na (KYK) bağlı öğrenci yurtlarında konaklayan öğrencilerin, yurt çamaşırhanelerindeki yıkama ve kurutma makineleri için online platform üzerinden kolayca randevu almalarını sağlamak amacıyla geliştirilmiştir. Sistem, öğrencilerin anlık olarak makine durumlarını (aktif, arızalı, bakımda) ve müsait zaman dilimlerini görmelerine olanak tanıyarak çamaşırhane kullanımını daha verimli ve planlı hale getirmeyi hedefler.
+        </p>
+        <p>
+            Kullanıcılar, sisteme kayıt olarak kendi yurtlarındaki çamaşırhaneleri listeleyebilir, istedikleri tarih ve saat için randevu oluşturabilir, mevcut randevularını görüntüleyip iptal edebilirler.
+        </p>
+
+        <div class="project-details">
+            <h3>Proje Bilgileri</h3>
+            <ul>
+                <li><strong>Üniversite:</strong> Bartın Üniversitesi</li>
+                <li><strong>Fakülte:</strong> Fen Fakültesi</li>
+                <li><strong>Bölüm:</strong> Bilgisayar Teknolojisi ve Bilişim Sistemleri</li>
+                <li><strong>Ders:</strong> BTS304 - Veritabanı Yönetim Sistemleri II</li>
+                <li><strong>Proje Türü:</strong> Final Sınavı Ödevi</li>
+                <li><strong>Akademik Yıl:</strong> 2024-2025 Bahar Dönemi</li>
+            </ul>
+            <hr style="margin: 20px 0;">
+            <ul>
+                <li><strong>Danışman Öğretim Üyesi:</strong> Dr. Öğr. Üyesi Bayram AKGÜL</li>
+                <li><strong>Hazırlayan Öğrenci:</strong> Nazmi KOÇAK</li>
+                <li><strong>Öğrenci Numarası:</strong> 23110708002</li>
+                <li><strong>Sınıf:</strong> 3. Sınıf</li>
+            </ul>
+        </div>
+
+        <div class="logo-credit">
+            <img src="~/img/bartin-uni-logo.jpg" alt="Bartın Üniversitesi Logo">
+            <p>Bu proje, belirtilen ders kapsamında akademik bir çalışma olarak hazırlanmıştır.</p>
+        </div>
+    </div>
+</div>
