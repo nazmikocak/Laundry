@@ -2,7 +2,7 @@
 
 Bu proje, Kredi ve Yurtlar Kurumu'na (KYK) bağlı öğrenci yurtları için geliştirilmiş modern ve kapsamlı bir **Çamaşırhane Randevu Sistemi**'dir. Öğrencilerin, konakladıkları yurttaki çamaşır ve kurutma makineleri için online olarak randevu almalarını, randevularını yönetmelerini ve çamaşırhane yoğunluğunu anlık olarak takip etmelerini sağlar.
 
-**Bartın Üniversitesi, Fen Fakültesi, Bilgisayar Teknolojisi ve Bilişim Sistemleri Bölümü**'nün `BTS304 - Veritabanı Yönetim Sistemleri II` dersi kapsamında, **Dr. Öğr. Üyesi Bayram AKGÜL** danışmanlığında, **Nazmi KOÇAK (23110708002)** tarafından Final Sınavı ödevi olarak hazırlanmıştır.
+**Bartın Üniversitesi, Fen Fakültesi, Bilgisayar Teknolojisi ve Bilişim Sistemleri Bölümü**'nün `BTS304 - Veritabanı Yönetim Sistemleri II` dersi kapsamında, **[Dr. Öğr. Üyesi Bayram AKGÜL](https://github.com/bayramakgul)** danışmanlığında, **Nazmi KOÇAK (23110708002)** tarafından Final Sınavı ödevi olarak hazırlanmıştır.
 
 ---
 
