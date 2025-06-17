@@ -7,16 +7,6 @@ Bu proje, Kredi ve Yurtlar Kurumu'na (KYK) bağlı öğrenci yurtları için gel
 
 ![localhost_5214_Auth_SignIn](https://github.com/user-attachments/assets/0df53da9-58c3-490c-a72f-bfd135d08b7d)
 
-![localhost_5214_ (3)](https://github.com/user-attachments/assets/c12efcba-b1ad-4c72-8bed-920194e499d7)
-
-![localhost_5214_Appointment_Search](https://github.com/user-attachments/assets/755a0d07-ef3c-42c3-aab3-cdae78e245f0)
-
-![localhost_5214_Appointment_LaundryList_date=06%2F16%2F2025%2000%3A00%3A00 machineType=Washing](https://github.com/user-attachments/assets/9dfdb4f4-e10f-4a28-b10c-4faa63eb889e)
-
-![localhost_5214_Appointment_SelectMachine_laundryId=3 slotStart=2025-06-16T22%3A00%3A00 0000000 machineType=Washing](https://github.com/user-attachments/assets/e7b5ea99-d6f7-437e-a48f-ca3a0c5f3c7e)
-
-![localhost_5214_Appointment_Confirm_machineId=8 slotStart=2025-06-16T22%3A00%3A00 0000000](https://github.com/user-attachments/assets/aeec432e-69e6-4b50-83ae-1434dd4f9412)
-
 ---
 
 ## 🚀 Projenin Amacı ve Kapsamı
