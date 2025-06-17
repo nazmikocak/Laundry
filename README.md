@@ -1,10 +1,11 @@
-![localhost_5214_Auth_SignIn](https://github.com/user-attachments/assets/a78474ee-e7af-4a05-b551-893e28fb9fa1)![localhost_5214_Auth_SignIn](https://github.com/user-attachments/assets/a78474ee-e7af-4a05-b551-893e28fb9fa1)# KYK Çamaşırhane Randevu Sistemi
+# KYK Çamaşırhane Randevu Sistemi
 
 Bu proje, Kredi ve Yurtlar Kurumu'na (KYK) bağlı öğrenci yurtları için geliştirilmiş modern ve kapsamlı bir **Çamaşırhane Randevu Sistemi**'dir. Öğrencilerin, konakladıkları yurttaki çamaşır ve kurutma makineleri için online olarak randevu almalarını, randevularını yönetmelerini ve çamaşırhane yoğunluğunu anlık olarak takip etmelerini sağlar.
 
 Bu proje, **Bartın Üniversitesi, Fen Fakültesi, Bilgisayar Teknolojisi ve Bilişim Sistemleri Bölümü**'nün `BTS304 - Veritabanı Yönetim Sistemleri II` dersi kapsamında, **Dr. Öğr. Üyesi Bayram AKGÜL** danışmanlığında, **Nazmi KOÇAK (23110708002)** tarafından Final Sınavı ödevi olarak hazırlanmıştır.
 
-![localhost_5214_Auth_SignIn](https://github.com/user-attachments/assets/38f30290-16a0-4742-88e7-e01c68bf20d1)
+
+![localhost_5214_Auth_SignIn](https://github.com/user-attachments/assets/0df53da9-58c3-490c-a72f-bfd135d08b7d)
 
 ---
 
@@ -24,8 +25,8 @@ Projenin temel hedefi, yurtlardaki manuel veya verimsiz çamaşırhane randevu s
 Bu proje, modern yazılım geliştirme prensipleri ve teknolojileri kullanılarak inşa edilmiştir.
 
 ### Arka Plan (Backend)
-- **Platform:** .NET 8
-- **Mimari:** Katmanlı Mimari (Entities, Repositories, Services, Web)
+- **Platform:** .NET 6 / .NET 7
+- **Mimari:** Katmanlı Mimari (Entities, Repositories, Services)
 - **Desenler:** Repository, Unit of Work (Service & Repository Manager), Dependency Injection (DI)
 - **Dil:** C#
 - **Web Framework:** ASP.NET Core MVC
@@ -109,7 +110,7 @@ Sistem, ilişkisel bir veritabanı modeli üzerine kurulmuştur. Temel tablolar 
 
 - **Ad Soyad:** Nazmi KOÇAK
 - **Öğrenci No:** 23110708002
-- **GitHub:** [@your-github-username](https://github.com/nazmikocak)
-- **LinkedIn:** [your-linkedin-profile](https://www.linkedin.com/in/nazmikocak/)
+- **GitHub:** [@your-github-username](https://github.com/your-github-username)
+- **LinkedIn:** [your-linkedin-profile](https://linkedin.com/in/your-profile)
 
 Bu proje, akademik bir çalışma olup, sürekli geliştirilmeye açıktır. Katkıda bulunmak isterseniz lütfen bir "issue" açın veya "pull request" gönderin.
