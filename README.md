@@ -4,6 +4,7 @@ Bu proje, Kredi ve Yurtlar Kurumu'na (KYK) bağlı öğrenci yurtları için gel
 
 **Bartın Üniversitesi, Fen Fakültesi, Bilgisayar Teknolojisi ve Bilişim Sistemleri Bölümü**'nün `BTS304 - Veritabanı Yönetim Sistemleri II` dersi kapsamında, **Dr. Öğr. Üyesi Bayram AKGÜL** danışmanlığında, **Nazmi KOÇAK (23110708002)** tarafından Final Sınavı ödevi olarak hazırlanmıştır.
 
+---
 
 ![localhost_5214_Auth_SignIn](https://github.com/user-attachments/assets/0df53da9-58c3-490c-a72f-bfd135d08b7d)
 
