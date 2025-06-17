@@ -110,7 +110,7 @@ Sistem, ilişkisel bir veritabanı modeli üzerine kurulmuştur. Temel tablolar 
 
 - **Ad Soyad:** Nazmi KOÇAK
 - **Öğrenci No:** 23110708002
-- **GitHub:** [@your-github-username](https://github.com/nazmikocak)
-- **LinkedIn:** [your-linkedin-profile](https://linkedin.com/in/nazmikocak)
+- **GitHub:** [Nazmi Koçak](https://github.com/nazmikocak)
+- **LinkedIn:** [Nazmi Koçak](https://linkedin.com/in/nazmikocak)
 
 Bu proje, akademik bir çalışma olup, sürekli geliştirilmeye açıktır. Katkıda bulunmak isterseniz lütfen bir "issue" açın veya "pull request" gönderin.
