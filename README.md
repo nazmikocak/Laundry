@@ -25,8 +25,8 @@ Projenin temel hedefi, yurtlardaki manuel veya verimsiz çamaşırhane randevu s
 Bu proje, modern yazılım geliştirme prensipleri ve teknolojileri kullanılarak inşa edilmiştir.
 
 ### Arka Plan (Backend)
-- **Platform:** .NET 6 / .NET 7
-- **Mimari:** Katmanlı Mimari (Entities, Repositories, Services)
+- **Platform:** .NET 8
+- **Mimari:** Katmanlı Mimari (Entities, Repositories, Services, Web)
 - **Desenler:** Repository, Unit of Work (Service & Repository Manager), Dependency Injection (DI)
 - **Dil:** C#
 - **Web Framework:** ASP.NET Core MVC
@@ -93,7 +93,7 @@ Sistem, ilişkisel bir veritabanı modeli üzerine kurulmuştur. Temel tablolar 
 
 1.  **Klonlama:** Projeyi bilgisayarınıza klonlayın:
     ```bash
-    git clone https://github.com/your-username/your-repository-name.git
+    git clone https://github.com/nazmikocak/LaundrySystem.git
     ```
 2.  **Veritabanı Kurulumu:**
     - `CREATE_DATABASE.sql` script'ini kullanarak veritabanını ve tabloları oluşturun.
@@ -110,7 +110,7 @@ Sistem, ilişkisel bir veritabanı modeli üzerine kurulmuştur. Temel tablolar 
 
 - **Ad Soyad:** Nazmi KOÇAK
 - **Öğrenci No:** 23110708002
-- **GitHub:** [@your-github-username](https://github.com/your-github-username)
-- **LinkedIn:** [your-linkedin-profile](https://linkedin.com/in/your-profile)
+- **GitHub:** [@your-github-username](https://github.com/nazmikocak)
+- **LinkedIn:** [your-linkedin-profile](https://linkedin.com/in/nazmikocak)
 
 Bu proje, akademik bir çalışma olup, sürekli geliştirilmeye açıktır. Katkıda bulunmak isterseniz lütfen bir "issue" açın veya "pull request" gönderin.
