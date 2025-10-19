@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LaundrySystem.Entities\LaundrySystem.Entities.csproj" />
-    <ProjectReference Include="..\LaundrySystem.Repositories\LaundrySystem.Repositories.csproj" />
+    <ProjectReference Include="..\LaundrySystem.Entities\Laundry.Entities.csproj" />
+    <ProjectReference Include="..\LaundrySystem.Repositories\Laundry.Repositories.csproj" />
   </ItemGroup>
 
 </Project>
