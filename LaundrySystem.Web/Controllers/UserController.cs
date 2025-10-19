@@ -81,7 +81,7 @@ namespace LaundrySystem.Web.Controllers
                 await _serviceManager.UserService.ChangePasswordAsync(CurrentUserId, changePasswordDto);
                 TempData["SuccessMessage"] = "Parolanız başarıyla değiştirildi.";
 
-                return RedirectToAction("Info");
+                return RedirectToAction("Password");
             }
             catch (Exception ex)
             {

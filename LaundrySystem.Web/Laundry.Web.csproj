@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LaundrySystem.Repositories\LaundrySystem.Repositories.csproj" />
-    <ProjectReference Include="..\LaundrySystem.Services\LaundrySystem.Services.csproj" />
+    <ProjectReference Include="..\LaundrySystem.Repositories\Laundry.Repositories.csproj" />
+    <ProjectReference Include="..\LaundrySystem.Services\Laundry.Services.csproj" />
   </ItemGroup>
 
 </Project>

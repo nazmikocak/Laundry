@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundrySystem.Entities", "LaundrySystem.Entities\LaundrySystem.Entities.csproj", "{D4312670-7E40-4463-B2BF-D6CD230BA67E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laundry.Entities", "LaundrySystem.Entities\Laundry.Entities.csproj", "{D4312670-7E40-4463-B2BF-D6CD230BA67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundrySystem.Repositories", "LaundrySystem.Repositories\LaundrySystem.Repositories.csproj", "{9B8F4D77-7AF1-4C90-A4AD-0FD4891852E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laundry.Repositories", "LaundrySystem.Repositories\Laundry.Repositories.csproj", "{9B8F4D77-7AF1-4C90-A4AD-0FD4891852E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundrySystem.Services", "LaundrySystem.Services\LaundrySystem.Services.csproj", "{D4834A70-70D9-4795-BEDB-AA7F256FB570}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laundry.Services", "LaundrySystem.Services\Laundry.Services.csproj", "{D4834A70-70D9-4795-BEDB-AA7F256FB570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundrySystem.Web", "LaundrySystem.Web\LaundrySystem.Web.csproj", "{57EBC895-8812-4A30-9DCD-BB6B56316F9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laundry.Web", "LaundrySystem.Web\Laundry.Web.csproj", "{57EBC895-8812-4A30-9DCD-BB6B56316F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
